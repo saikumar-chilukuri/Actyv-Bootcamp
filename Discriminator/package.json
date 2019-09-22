@@ -1,0 +1,11 @@
+{
+  "name": "discriminator",
+  "version": "1.0.0",
+  "description": "This is example of discriminator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha || true"
+  },
+  "author": "",
+  "license": "MIT"
+}

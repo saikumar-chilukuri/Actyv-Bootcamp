@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+const log4js = require("log4js");
+log4js.configure("./config/log4js.json");
+require("dotenv").config();
+
+const app = require("../index");
+require("dotenv").config();
+
+app.set("port", process.env.PORT || 3000);
+
+const server = app.listen(app.get("port"), () => {
+  console.log("Application listening on port ", server.address().port);
+});

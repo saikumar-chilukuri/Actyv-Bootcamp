@@ -1,0 +1,11 @@
+{
+  "name": "populate",
+  "version": "1.0.0",
+  "description": "This is an example of populate method",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha || true"
+  },
+  "author": "Sai kumar",
+  "license": "MIT"
+}

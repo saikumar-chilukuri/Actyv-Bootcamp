@@ -1,0 +1,11 @@
+{
+  "name": "sessions",
+  "version": "1.0.0",
+  "description": "This is example of session managment",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha || true"
+  },
+  "author": "Sai kumar",
+  "license": "MIT"
+}

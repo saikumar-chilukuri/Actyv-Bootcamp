@@ -1,0 +1,11 @@
+{
+  "name": "plugins",
+  "version": "1.0.0",
+  "description": "This is an example for creating the plugins",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha || true"
+  },
+  "author": "Sai kumar",
+  "license": "MIT"
+}

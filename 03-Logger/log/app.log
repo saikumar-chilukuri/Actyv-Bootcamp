@@ -1,0 +1,3 @@
+[2019-09-23T00:00:19.700] [DEBUG] index - This is in the first log module
+[2019-09-23T00:00:36.507] [DEBUG] index - This is the second log module
+[2019-09-23T00:00:43.230] [ERROR] index - This is the error log module
