@@ -14,10 +14,10 @@ const express = require("express");
 const router = express.Router();
 
 /**
- * Controller Methods responsible for register operations
+ * Controller Methods for logging and getting current user
  * @const
  */
-const { testRoute, loginUser } = require("../controller/login");
+const { testRoute, loginUser, currentUser } = require("../controller/login");
 
 /**
  *Check wether the router is functional
@@ -31,13 +31,24 @@ const { testRoute, loginUser } = require("../controller/login");
 router.get("/test", testRoute);
 /**
  * Registering the user
- * @name /login/register
+ * @name /login/current
  * @function
  * @memberof module:login/routes~loginRouter
  * @inner
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.post("/register", loginUser);
+router.post("/user", loginUser);
+
+/**
+ *Get the current active user
+ * @name /login/current
+ * @function
+ * @memberof module:login/routes~loginRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware.
+ */
+router.get("/current", currentUser);
 
 module.exports = router;

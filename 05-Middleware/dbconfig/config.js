@@ -1,7 +1,9 @@
-const mongoose = require("mongoose");
+/**
+ * Loading env variables to application
+ */
 require("dotenv").config();
 
 module.exports = {
   mongoURI: process.env.mongoURI,
-  secret: process.env.SECRET
+  secretOrKey: process.env.SECRET
 };

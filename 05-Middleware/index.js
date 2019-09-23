@@ -1,25 +1,86 @@
+/** Express Server
+ * @module server/app
+ */
+
+/**
+ * @namespace appServer
+ */
+
+/**
+ * Importing mongoose connection
+ */
 const mongoose = require("mongoose");
+/**
+ * Express is a Node.js web application framework
+ * @const
+ */
 const express = require("express");
+
+/**
+ * Body parser for  fetching the json objects
+ */
 const bodyParser = require("body-parser");
 
+/**
+ * Passport.js as an authentication middleware.
+ * @const
+ */
+const passport = require("passport");
+
 const app = express();
-const users = require("./routes/index");
+const login = require("./router/index");
 
 /***
- * @description Connecting to mongoDB database
+ * @default  Connecting MONGODB
+ * @description The mongoose uri is used to create database remotely.
  */
 const db = require("./dbconfig/config").mongoURI;
+
+/**
+ * Opening Mongoose Connection
+ * @name connect
+ * @function
+ * @memberof module:connection/mongoose~mongooseConfiguration
+ * @inner
+ * @param {string} mongoURI - MongoDB Connection URL
+ * @param {object} connectionOptions - MongoDB Connection Options
+ */
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch(err => console.log(err));
 
+/**
+ * Initializing BodyParser
+ * @function
+ * @name use
+ * @memberof module:server/app~appServer
+ * @inner
+ * @param {method} initialize - Midddleware
+ */
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 /**
- * Creating the route to server
+ * Initializing Passport
+ * @function
+ * @name use
+ * @memberof module:server/app~appServer
+ * @inner
+ * @param {method} initialize - Midddleware
  */
-app.use("/users", users);
+app.use(passport.initialize());
+require("./config/passport")(passport);
+
+/**
+ * Serving Routes
+ * @function
+ * @name use
+ * @memberof module:server/app~appServer
+ * @inner
+ * @param {string} root - Root Route
+ * @param {object} router - Express Router
+ */
+app.use("/login", login);
 
 module.exports = app;

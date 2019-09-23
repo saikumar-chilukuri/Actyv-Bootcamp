@@ -1,4 +1,6 @@
-const mongoose = require("mongoose");
+/**
+ * Loading env variables to application
+ */
 require("dotenv").config();
 
 module.exports = {

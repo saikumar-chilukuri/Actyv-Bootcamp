@@ -1,18 +1,43 @@
-const express = require("express");
-const router = express.Router();
+/** User Controller
+ * @module login/controller
+ */
 
+/**
+ * @namespace loginController
+ */
+
+/**
+ * Mongoose Model for Login.
+ * @const
+ */
 const Login = require("../models/login");
 
 const validateLoginInput = require("../validator/login");
 
+/**
+ * Controller to check the fucntioning of route
+ * @name testRoute
+ * @function
+ * @memberof module:login/controller~loginController
+ * @inner
+ * @param {Object} request - NULL
+ * @param {Object} response - Response Object
+ */
 testRoute = (req, res) => {
   res.send("Login Route Works");
 };
 
+/**
+ * Controller to create login session
+ * @name loginUser
+ * @function
+ * @memberof module:login/controller~loginController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 loginUser = (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
-
-  // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
   }

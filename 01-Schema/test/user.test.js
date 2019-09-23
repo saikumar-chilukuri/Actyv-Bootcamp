@@ -1,3 +1,6 @@
+/** Express router providing user related routes
+ * @module user/tests
+ */
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const chai = require("chai");
@@ -19,6 +22,13 @@ const user2 = {
 
 chai.use(chaiHttp);
 
+/**
+ * Runs before all the tests
+ * @name before
+ * @function
+ * @inner
+ * @param {callback} middleware - function with done as a param
+ */
 before(done => {
   User.create([user1, user2], (err, users) => {
     if (err) return done();
@@ -89,65 +99,95 @@ describe("Reading  User", () => {
   });
 });
 
-// describe("Update the user", () => {
-//   it("it should update the current user", done => {
-//     chai
-//       .request(server)
-//       .put(`/users/update/${user1._id}`)
-//       .send({
-//         firstName: "martin",
-//         lastName: "croog",
-//         phone: "121212i1992"
-//       })
-//       .end((err, res) => {
-//         res.body.should.have.status(200);
-//         res.body.should.be.a("object");
-//         res.body.should.have.property("message").eql("User updated");
-//         res.body.should.have.property("firstName").eql("martin");
-//       });
-//     done();
-//   });
+describe("Update the user", () => {
+  it("it should update the current user", done => {
+    chai
+      .request(server)
+      .put(`/users/update/${user1._id}`)
+      .send({
+        firstName: "martin",
+        lastName: "croog",
+        phone: "121212i1992"
+      })
+      .end((err, res) => {
+        res.body.should.have.status(200);
+        res.body.should.be.a("object");
+        res.body.should.have.property("message").eql("User updated");
+        res.body.should.have.property("firstName").eql("martin");
+      });
+    done();
+  });
 
-//   it("it should not update the user", done => {
-//     chai
-//       .request(server)
-//       .put(`/users/update/${user1._id}`)
-//       .end((err, res) => {
-//         res.body.should.have.status(200);
-//         res.body.should.be.a("object");
-//         res.body.should.have.property("message").eql("User updated");
-//         res.body.should.have.property("error").eql("err");
-//       });
-//     done();
-//   });
-// });
+  it("it should not update the user", done => {
+    chai
+      .request(server)
+      .put(`/users/update/${user1._id}`)
+      .end((err, res) => {
+        res.body.should.have.status(200);
+        res.body.should.be.a("object");
+        res.body.should.have.property("message").eql("User updated");
+        res.body.should.have.property("error").eql("err");
+      });
+    done();
+  });
+});
 
-// describe("Deleting User", () => {
-//   it("it should delete the user of id", done => {
-//     chai
-//       .request(server)
-//       .delete(`/users/delete/${user1._id}`)
-//       .end((err, res) => {
-//         res.should.have.status(200);
-//         res.body.should.be.a("object");
-//         res.body.should.have.property("message").eql("Deleted successfully");
-//       });
-//     done();
-//   });
+/**
+ * Test to delete the user document from the database
+ * @name DeleteUser
+ * @function
+ * @inner
+ * @param {string} DeleteUser - Name of test group
+ * @param {callback} middleware - function with done as a param
+ */
+describe("Deleting User", () => {
+  /**
+   * It will return the success response
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
+  it("it should delete the user of id", done => {
+    chai
+      .request(server)
+      .delete(`/users/delete/${user1._id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a("object");
+        res.body.should.have.property("message").eql("Deleted successfully");
+      });
+    done();
+  });
 
-//   it("it should not delete the user", done => {
-//     chai
-//       .request(server)
-//       .delete(`/users/delete/`)
-//       .end((err, res) => {
-//         res.should.have.status(404);
-//         res.body.should.be.a("object");
-//       });
-//     done();
-//   });
-// });
+  /**
+   * It will return error while deleting the user
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
+  it("it should not delete the user", done => {
+    chai
+      .request(server)
+      .delete(`/users/delete/${mongoUser2._id}`)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a("object");
+      });
+    done();
+  });
+});
 
+/**
+ * Runs after all the tests
+ * @name after
+ * @function
+ * @inner
+ * @param {callback} middleware - function with done as a param
+ */
 after(done => {
-  User.deleteMany(user1, user2);
+  User.deleteOne(mongoUser1);
+  User.deleteOne(mongoUser2);
   done();
 });

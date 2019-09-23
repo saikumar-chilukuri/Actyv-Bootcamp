@@ -1,9 +1,39 @@
+/** User Controller
+ * @module user/controller
+ */
+
+/**
+ * @namespace userController
+ */
+
+/**
+ * Mongoose Model for User.
+ * @const
+ */
 const User = require("../models/user");
 
+/**
+ * Controller to check the fucntioning of route
+ * @name testRoute
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - NULL
+ * @param {Object} response - Response Object
+ */
 testRoute = (req, res) => {
   res.json({ msg: "User works" });
 };
 
+/**
+ * Controller to handle the new user
+ * @name createUser
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 createUser = (req, res) => {
   const newUser = new User({
     firstname: req.body.firstname,
@@ -18,6 +48,15 @@ createUser = (req, res) => {
   });
 };
 
+/**
+ * Controller to read the user documents based on id
+ * @name readUser
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 readUser = (req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (err) return res.status(404).json({ msg: "Cannot read the user" });
@@ -25,6 +64,15 @@ readUser = (req, res) => {
   });
 };
 
+/**
+ * Controller to update the user details
+ * @name updateUser
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 updataeUser = (req, res) => {
   User.findByIdAndUpdate(req.params.id, { $set: req.body }, (err, user) => {
     if (err) return res.status(400).json(err);
@@ -32,6 +80,15 @@ updataeUser = (req, res) => {
   });
 };
 
+/**
+ * Controller to delete the user using id
+ * @name deleteUser
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 deleteUser = (req, res) => {
   User.findByIdAndRemove(req.params.id, err => {
     if (err) return res.status(400).json(err);
@@ -40,12 +97,30 @@ deleteUser = (req, res) => {
   });
 };
 
-//Mongoose meahods
+/**
+ * Controller to search the users in documents
+ * @name userSearch
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - NULL
+ * @param {Object} response - Response Object
+ */
 userSearch = (req, res) => {
   User.find(function(err, docs) {
     res.send(docs);
   }).sort({ lastname: "asc" });
 };
+
+/**
+ * Controller to find user based on params
+ * @name oneUser
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 oneUser = (req, res) => {
   User.findOne({ firstname: "oscar" }, function(err, docs) {
     if (err) return err;
@@ -53,6 +128,15 @@ oneUser = (req, res) => {
   });
 };
 
+/**
+ * Controller to find similar type of user
+ * @name userStatic
+ * @function
+ * @memberof module:user/controller~userController
+ * @inner
+ * @param {Object} request - Request Object
+ * @param {Object} response - Response Object
+ */
 userStatic = (req, res) => {
   var newUser = new User({
     firstname: "james",
