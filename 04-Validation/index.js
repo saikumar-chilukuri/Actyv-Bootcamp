@@ -62,7 +62,4 @@ app.use(bodyParser.json());
  */
 app.use("/login", login);
 
-const port = process.env.PORT;
-app.listen(port, () => console.log(`Server running on port ${port}`));
-
 module.exports = app;

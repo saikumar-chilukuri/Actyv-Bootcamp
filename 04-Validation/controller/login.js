@@ -10,6 +10,7 @@
  * Mongoose Model for Login.
  * @const
  */
+
 const Login = require("../models/login");
 
 const validateLoginInput = require("../validator/login");
@@ -41,21 +42,19 @@ loginUser = (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const email = req.body.email;
-  const password = req.body.password;
+  // const email = req.body.email;
+  // const password = req.body.password;
 
-  const newLogin = new Login();
-  newLogin.email = email;
-  newLogin.password = password;
+  const newLogin = new Login({
+    email: req.body.email,
+    password: req.body.password
+  });
+  // newLogin.email = email;
+  // newLogin.password = password;
 
-  newLogin.save(function(err, savedLogin) {
-    if (err) {
-      res.send
-        .status(500)
-        .json(err)
-        .send("Login failed");
-    }
-    return res.status(200).send(savedLogin);
+  newLogin.save(function(err, res) {
+    if (err) return res.status(500).send("Unable to login");
+    return res.status(200).json(res);
   });
 };
 

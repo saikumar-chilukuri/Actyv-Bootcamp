@@ -59,7 +59,7 @@ createUser = (req, res) => {
 readUser = (req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (err) return res.status(404).send("Cannot read the user");
-    res.status(200).send("user read successfully");
+    res.status(200).json({ message: "user read successfully" });
   });
 };
 /**
