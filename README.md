@@ -55,9 +55,10 @@ $ npm run test
 ```
 
 ### Running the Unit tests
+- Create the .env(environmental variables) file in the parent directory.
 - Select the Debug menu from  Visual Studio Code(VS CODE).
 - Select the Example name from the configuration menu.
-- Start the debugger.
+- Click on play button to start the debugging.
 
 
 ### Deployment 
