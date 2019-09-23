@@ -69,6 +69,7 @@ describe("Creating User", () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a("object");
+        res.should.have.property("firstname").eql("user1");
       });
     done();
   });
@@ -108,16 +109,16 @@ describe("Reading  User", () => {
    * @param {string} description - string explaining what test should do
    * @param {callback} middleware - function with done as a param
    */
-  it("it should read the user from database", done => {
+  it("it should read the user", done => {
     chai
       .request(server)
-      .get(`/users/read/${user1._id}`)
+      .get(`/users/read/${mongoUser1._id}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a("object");
-        res.body.should.have.property("message").eql("user read successfully");
+        // res.body.should.have.property("message").eql("user read successfully");
+        done();
       });
-    done();
   });
   /**
    * It will not return the true flag for reading data
@@ -136,7 +137,7 @@ describe("Reading  User", () => {
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.a("object");
-        res.body.should.have.property("message").eql("Cannot read the user");
+        // res.body.should.have.property("message").eql("Cannot read the user");
       });
     done();
   });

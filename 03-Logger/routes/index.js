@@ -19,6 +19,7 @@ const router = express.Router();
  */
 const log = require("log4js").getLogger("index");
 
+const { indexlog, secondlog, errorlog } = require("../controllers/index");
 /**
  *Getting the parent or the index route.
  * @name /
@@ -28,10 +29,7 @@ const log = require("log4js").getLogger("index");
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get("/", function(req, res) {
-  log.debug("This is in the first log module");
-  res.send("I am in first log");
-});
+router.get("/", indexlog);
 
 /**
  *Routing to the second page
@@ -42,10 +40,7 @@ router.get("/", function(req, res) {
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get("/log2", function(req, res) {
-  log.debug("This is the second log module");
-  res.send("I am in second log");
-});
+router.get("/log2", secondlog);
 /**
  *Getting the errors from route
  * @name /log/error
@@ -55,9 +50,6 @@ router.get("/log2", function(req, res) {
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get("/log/error", function(req, res) {
-  log.error("This is the error log module");
-  res.error("I am in error log");
-});
+router.get("/log/error", errorlog);
 
 module.exports = router;
