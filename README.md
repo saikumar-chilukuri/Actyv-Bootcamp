@@ -112,5 +112,5 @@ Install the VSCode plugins which simplify the development of the applications.
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](https://github.com/saikumar-chilukuri/Mern-Stack-Bootcamp/blob/master/LICENSE)**
-- Copyright 2019 © <a href="https://github.com/saikumar-chilukuri" target="_blank">Sai Kumar Ch</a>.
+- Copyright 2019 © <a href="https://github.com/saikumar-chilukuri" target="_blank">Sai Kumar Ch</a>
 
