@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Schema Test",
-      "program": "${workspaceFolder}/01-Schema/node_modules/mocha/bin/_mocha",
+      "program": "${workspaceFolder}/BootCamp/01-Schema/node_modules/mocha/bin/_mocha",
       "args": [
         "--timeout",
         "999999",
@@ -21,11 +21,48 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Meathods Test",
-      "program": "${workspaceFolder}/02-Methods/node_modules/mocha/bin/_mocha",
+      "name": "Methods Test",
+      "program": "${workspaceFolder}/BootCamp/02-Methods/node_modules/mocha/bin/_mocha",
       "args": [
-        "-u",
-        "tdd",
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/02-Methods/test"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Methods Test",
+      "program": "${workspaceFolder}/BootCamp/03-Logger/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/02-Methods/test"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Methods Test",
+      "program": "${workspaceFolder}/BootCamp/04-Validation/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/02-Methods/test"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Methods Test",
+      "program": "${workspaceFolder}/BootCamp/05-Middleware/node_modules/mocha/bin/_mocha",
+      "args": [
         "--timeout",
         "999999",
         "--colors",
