@@ -50,7 +50,7 @@ mongoose
  * @memberof module:server/app~appServer
  * @inner
  * @param {method} initialize - Midddleware
- */
+ */ 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

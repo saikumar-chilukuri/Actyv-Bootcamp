@@ -39,7 +39,23 @@ before(done => {
     done();
   });
 });
+
+/**
+ * Test  to  create the user with params
+ * @name CreateUser
+ * @function
+ * @inner
+ * @param {string} CreateUser - Name of test group
+ * @param {callback} middleware - function with done as a param
+ */
 describe("Creating User", () => {
+  /**
+   * It will return the success on creating new user
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
   it("it should create the new user", done => {
     let user = {
       firstname: "user1",
@@ -56,7 +72,13 @@ describe("Creating User", () => {
       });
     done();
   });
-
+  /**
+   * It will return the err message as not created
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
   it("it should not create the new user", done => {
     chai
       .request(server)
@@ -70,7 +92,22 @@ describe("Creating User", () => {
   });
 });
 
+/**
+ * Test to Read the user details from the database
+ * @name ReadUser
+ * @function
+ * @inner
+ * @param {string} ReadUser - Name of test group
+ * @param {callback} middleware - function with done as a param
+ */
 describe("Reading  User", () => {
+  /**
+   * It will return the status as success.
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
   it("it should read the user from database", done => {
     chai
       .request(server)
@@ -82,7 +119,13 @@ describe("Reading  User", () => {
       });
     done();
   });
-
+  /**
+   * It will not return the true flag for reading data
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
   it("it should not read the user", done => {
     // let dumb = {
     //   id = "8765432"
@@ -99,7 +142,22 @@ describe("Reading  User", () => {
   });
 });
 
+/**
+ * Test to Update the existing user
+ * @name UpdateUser
+ * @function
+ * @inner
+ * @param {string} UpdateUser - Name of test group
+ * @param {callback} middleware - function with done as a param
+ */
 describe("Update the user", () => {
+  /**
+   * It will return success on the update
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
   it("it should update the current user", done => {
     chai
       .request(server)
@@ -117,6 +175,13 @@ describe("Update the user", () => {
       });
     done();
   });
+  /**
+   * It will return the nessage as not updated
+   * @function
+   * @inner
+   * @param {string} description - string explaining what test should do
+   * @param {callback} middleware - function with done as a param
+   */
 
   it("it should not update the user", done => {
     chai
@@ -125,7 +190,7 @@ describe("Update the user", () => {
       .end((err, res) => {
         res.body.should.have.status(200);
         res.body.should.be.a("object");
-        res.body.should.have.property("message").eql("User updated");
+        res.body.should.have.property("message").eql("User not updated");
         res.body.should.have.property("error").eql("err");
       });
     done();

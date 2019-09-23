@@ -42,7 +42,7 @@ createUser = (req, res) => {
   });
   newUser.save(function(err) {
     if (err) {
-      return res.status(400).json({ msg: "Unable to create user" });
+      return res.status(400).json(err);
     }
     res.status(200).json(newUser);
   });

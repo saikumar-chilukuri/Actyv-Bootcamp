@@ -47,7 +47,7 @@ router.get("/test", testRoute);
 router.post("/create", createUser);
 /**
  *Read the user detail by id params
- * @name /users/read/:id
+ * @name /users/read/:id 
  * @function
  * @memberof module:users/routes~usersRouter
  * @inner
