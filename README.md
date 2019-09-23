@@ -30,12 +30,12 @@
 Bootcamp requires [Node.js](https://nodejs.org/) v12.6.0 and [Npm](https://www.npmjs.com) v6.11.3 to run.
 > Clone the github repository:
 ```sh
-$ git clone https://github.com/saikumar-chilukuri/Mern-Stack-BootCamp.git
-$ cd Mern-Stack-BootCamp
+$ git clone https://github.com/saikumar-chilukuri/Actyv-Bootcamp.git
+$ cd BootCamp
 ```
 Select the example directory to walk through.
 ```sh
-$ cd examples
+$ cd example-name
 ```
 ### Development
 Select the example and install the dependencies:
@@ -53,6 +53,13 @@ For running the unit tests.
 ```sh
 $ npm run test
 ```
+
+### Running the Unit tests
+- Select the Debug menu from  Visual Studio Code(VS CODE).
+- Select the Example name from the configuration menu.
+- Start the debugger.
+
+
 ### Deployment 
 Verify the deployment by navigating to your server **PORT NUMBER** in your preferred browser.
 Running through Localhost
